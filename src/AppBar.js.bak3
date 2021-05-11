@@ -47,14 +47,13 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   icon: {
-    htmlColor: 'black',
+    htmlColor: 'white',
   },
   menuButton: {
     marginRigth: theme.spacing(2),
   },
   title: {
     flexGrow: 1,
-    color: 'black',
   }
 }));
 
@@ -103,21 +102,31 @@ export default function TopBar(props) {
       )
 
   return (
-      <AppBar color="transparent" elevation={0} position="static">
+      <AppBar position="static">
         <Toolbar>
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+            <MenuIcon />
+          </IconButton>
           <Typography variant="h6" className={classes.title}>
             RIPHarambe
           </Typography>
           <Tooltip title="Purchase">
               <Link rel="noopener noreferrer" target="_blank" href='https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x5ab48bbfca3214764ac06c8c37b3a3414533038f'>
             <IconButton>
-              <ShopIcon />
+              <ShopIcon htmlColor='white' />
             </IconButton>
               </Link>
           </Tooltip>
+          <Tooltip title="Telegram">
+            <Link rel="noopener noreferrer" target="_blank" href='https://t.me/RIPHarambeToken'>
+              <IconButton>
+                <FontAwesomeIcon color='white' icon={faTelegram} />
+              </IconButton>
+            </Link>
+          </Tooltip>
           <IconButton aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
             <Tooltip title="Vote">
-              <HowToVoteIcon />
+              <HowToVoteIcon htmlColor='white' />
             </Tooltip>
           </IconButton>
           <Menu

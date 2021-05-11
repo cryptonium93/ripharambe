@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     textAlign: "center",
     maxWidth: 345,
+    //backgroundColor: theme.palette.background.paper,
   },
   media: {
     height: 0,

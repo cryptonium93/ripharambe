@@ -19,25 +19,29 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     textAlign: "center",
     maxWidth: 345,
+    //background: 'black',
   },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
   },
+  text: {
+    //color: 'white',
+  }
 }));
 
 const handleClick = () => {
   console.info('You clicked the Chip.');
 };
 
+        //<Typography><img src={icon} alt="icon" /></Typography>
 export default function Header(props) {
   const classes = useStyles();
 
   return (
       <Container maxWidth="sm" className={classes.root}>
-        <Typography color="textPrimary">Community Ape Fund</Typography>
-        <Typography color="textSecondary">{props.supply}</Typography>
-        <Typography><img src={icon} alt="icon" /></Typography>
+        <Typography className={classes.text} color="textPrimary">Community Ape Fund</Typography>
+        <Typography className={classes.text} color="textSecondary">{props.supply}</Typography>
         <Tokenomics />
         <Roadmap />
       </Container>

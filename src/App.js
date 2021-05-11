@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import Web3 from 'web3'
+import background from './background.jpg'
 import AlignItemList from './AlignItemList.js'
+import Anthem from "./Anthem.js";
 import TopBar from './AppBar.js'
 import Header from './Header.js'
+import BottomNav from './BottomNav.js'
 import logo2 from './icon48.png';
 import logo from './logo.svg';
 import icon from './icon.svg';
@@ -11,6 +14,7 @@ import Link from '@material-ui/core/Link';
 import './App.css';
 import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -58,6 +62,9 @@ const useStyles = theme => ({
     flexGrow: 1,
     textAlign: "center",
     maxWidth: 345,
+    color: 'black',
+    background: 'black',
+    backgroundColor: 'blue',
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -150,35 +157,14 @@ class App extends Component {
     };
     const img = <img src={icon} alt="icon" />
     return (
-    <div className={classes.root}>
+    <div className='App'>
       <TopBar wallet1={this.state.wallet1} wallet2={this.state.wallet2}/>
       <Header supply={this.state.supply}/>
+			<Anthem />
+			<BottomNav />
     </div>
     );
   }
 }
-
-/*
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-*/
 
 export default withStyles(useStyles)(App);

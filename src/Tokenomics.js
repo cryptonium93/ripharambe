@@ -14,10 +14,16 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     width: '100%',
     maxWidth: '36ch',
-    backgroundColor: theme.palette.background.paper,
+    //backgroundColor: theme.palette.background.paper,
+    //backgroundColor: 'transparent',
     textAlign: 'center',
+    marginTop: '10ch',
+  },
+  text: {
+    //color: 'white',
   },
   inline: {
+    //color: 'white',
     display: 'inline',
   },
 }));
@@ -27,8 +33,8 @@ export default function Tokenomics() {
 
   return (
     <List className={classes.root}>
-      <Typography><h1>Tokenomics</h1></Typography>
-      <ListItem alignItems="flex-start">
+      <Typography className={classes.text}><h1>Tokenomics</h1></Typography>
+      <ListItem  className={classes.text} alignItems="flex-start">
         <ListItemText
           primary="Liquidity Locked"
           secondary={
@@ -48,9 +54,9 @@ export default function Tokenomics() {
         />
       </ListItem>
       <Divider variant="inset" component="li" />
-      <ListItem alignItems="flex-start">
+      <ListItem className={classes.text} alignItems="flex-start">
         <ListItemText
-          primary="Community APE Fund"
+          primary="Community Ape Fund"
           secondary={
             <React.Fragment>
               <Typography
@@ -67,7 +73,7 @@ export default function Tokenomics() {
         />
       </ListItem>
       <Divider variant="inset" component="li" />
-      <ListItem alignItems="flex-start">
+      <ListItem className={classes.text} alignItems="flex-start">
         <ListItemText
           primary="Special Giveway"
           secondary={

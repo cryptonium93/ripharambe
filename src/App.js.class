@@ -1,8 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react'
 import Web3 from 'web3'
-import { makeStyles } from '@material-ui/core/styles';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTelegram } from '@fortawesome/free-brands-svg-icons'
+import { withStyles } from '@material-ui/core/styles';
 import metamask from './metamask-fox.svg';
 import pancakeswap from './pancakeswap.svg';
 import Popover from '@material-ui/core/Popover';
@@ -38,43 +36,27 @@ import Chip from '@material-ui/core/Chip';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = theme => ({
   root: {
-    marginRight: 'auto',
-    //background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-    background: 'linear-gradient(45deg, #3366ff 30%, #0033cc 90%)',
-    //background: 'linear-gradient(45deg, #000099 30%, #000000 90%)',
     flexGrow: 1,
   },
-  icon: {
-    htmlColor: 'black',
-  },
-  menuButton: {
-    marginRigth: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-    color: 'black',
+});
+
+class TopBar extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { account: '' }
+    this.state
   }
-}));
 
-const handleClick = () => {
-  console.info('You clicked the Chip.');
-};
 
-const handleConnect = () => {
+async handleConnect() {
+	let web3 = new Web3(window.ethereum)
+ 	let accounts = await web3.eth.requestAccounts()
   console.info('You clicked connect.');
 };
 
-export default function TopBar(props) {
-  async function handleConnect() {
-    console.info('You clicked connect.');
-	  let web3 = new Web3(window.ethereum)
- 	  let accounts = await web3.eth.requestAccounts()
-    //this.setState({ account: accounts[0] })
-  }
-  console.log("wallet", props.wallet1)
-  const classes = useStyles();
+  render() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -102,8 +84,9 @@ export default function TopBar(props) {
       </Icon>
       )
 
+  const classes = useStyles();
   return (
-      <AppBar color="transparent" elevation={0} position="static">
+      <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             RIPHarambe
@@ -111,14 +94,15 @@ export default function TopBar(props) {
           <Tooltip title="Purchase">
               <Link rel="noopener noreferrer" target="_blank" href='https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x5ab48bbfca3214764ac06c8c37b3a3414533038f'>
             <IconButton>
-              <ShopIcon />
+              {pcsIcon}
             </IconButton>
               </Link>
           </Tooltip>
-          <IconButton aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-            <Tooltip title="Vote">
-              <HowToVoteIcon />
-            </Tooltip>
+          <IconButton onClick={handleConnect}>
+            {connectIcon}
+          </IconButton>
+          <IconButton aria-controls="simple-menu" aria-haspopu="true" onClick={handleClick}>
+            <HowToVoteIcon />
           </IconButton>
           <Menu
             id="simple-menu"
@@ -134,5 +118,8 @@ export default function TopBar(props) {
           </Menu>
         </Toolbar>
       </AppBar>
-      );
+      )
+  }
 }
+
+export default withStyles(useStyles)(TopBar);
