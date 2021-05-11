@@ -1,0 +1,84 @@
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import icon from './icon.svg';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import Chip from '@material-ui/core/Chip';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardActions from '@material-ui/core/CardActions';
+import Avatar from '@material-ui/core/Avatar';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    textAlign: "center",
+    maxWidth: 345,
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  },
+}));
+
+const handleClick = () => {
+  console.info('You clicked the Chip.');
+};
+
+export default function Header(props) {
+  const classes = useStyles();
+
+  return (
+      <div className="App">
+        <Chip
+          label={<Typography>Community Ape Fund: {props.supply}</Typography>}
+          onClick={handleClick}
+        />
+        <Grid
+          container
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          style={{ minWidth: '100vh'}}
+          justify="center"
+        >
+          <Grid item xs={3}>
+            <Card className={classes.root}>
+              <CardHeader
+                title="Community Ape Fund"
+                subheader={props.supply}
+              />
+              <CardMedia
+                className={classes.media}
+                image={icon}
+                title="Harambe"
+              />
+              <CardActions>
+                <ExpandMoreIcon />
+              </CardActions>
+            </Card>
+          </Grid>
+        </Grid>
+
+        <Typography color="textPrimary">Community Ape Fund</Typography>
+        <Typography color="textSecondary">{props.supply}</Typography>
+        <Typography><img src={icon} alt="icon" /></Typography>
+        <Grid
+          container
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          style={{ minWidth: '100vh'}}
+          justify="center"
+        >
+          <Grid item xs={5}>
+            <Typography>
+              On 5/28/2016 Harambe was tragically murdered at the young age of 17.  We’ve created a lighthearted fun crypto in his memory to make sure we never forget that fateful day in history. This project has no roadmap other than building a community, having fun, and deciding where we go together. Welcome to the movement. 
+            </Typography>
+          </Grid>
+        </Grid>
+      </div>
+  );
+}

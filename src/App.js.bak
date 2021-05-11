@@ -1,0 +1,259 @@
+import React, { Component } from 'react'
+import Web3 from 'web3'
+import AlignItemList from './AlignItemList.js'
+import logo2 from './icon48.png';
+import logo from './logo.svg';
+import icon from './icon.svg';
+import Link from '@material-ui/core/Link';
+//import { ReactComponent as Hicon } from './icon.svg'
+import './App.css';
+import { withStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Button';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Tooltip from '@material-ui/core/Tooltip';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import DoneIcon from '@material-ui/icons/Done';
+import ShopIcon from '@material-ui/icons/Shop';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import SvgIcon from '@material-ui/core/SvgIcon';
+import WhatshotIcon from '@material-ui/icons/Whatshot';
+import Icon from '@material-ui/core/Icon';
+import Chip from '@material-ui/core/Chip';
+import Avatar from '@material-ui/core/Avatar';
+import Menu from '@material-ui/core/Menu';
+
+class Contract extends Component {
+  constructor(metafile) {
+    const meta = require("./RIPHarambe_metadata.json")
+    this.abi = meta.output.abi
+  }
+}
+
+class Harambe extends Component {
+  constructor() {
+    super("./RIPHarambe_metadata.json")
+  }
+}
+
+//const theme = createMuiTheme();
+
+const useStyles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+  logo: {
+    flexGrow: 1,
+    maxHeight: 2,
+    maxWidth: 40,
+    marginRight: '10px',
+  },
+  about: {
+    textAlign: 'center',
+    maxWidth: 'sm',
+  },
+  imageIcon: {
+    height: '100%'
+  },
+  iconRoot: {
+    textAlign: 'center'
+  },
+});
+
+function TokenIcon2(props) {
+  return (
+    <SvgIcon {...props}>
+      <path component={icon}/>
+    </SvgIcon>
+  );
+}
+
+class App extends Component {
+  componentWillMount() {
+    this.loadBlockchainData()
+  }
+
+  async handleConnect() {
+	  let web3 = new Web3(window.ethereum)
+ 	  let accounts = await web3.eth.requestAccounts()
+    this.setState({ account: accounts[0] })
+  }
+
+  async loadBlockchainData() {
+    //const web3 = new Web3(Web3.givenProvider || "http://localhost:8545")
+    var meta = require("./RIPHarambe_metadata.json")
+    let web3 = new Web3('https://bsc-dataseed1.binance.org:443');
+    let accounts = await web3.eth.getAccounts()
+    if (window.ethereum && 0) {
+      console.log("Use metmask");
+      web3 = new Web3(window.ethereum)
+      accounts = await web3.eth.requestAccounts()
+    }
+
+    console.log("web3 ", web3)
+    console.log("accounts ", accounts)
+    this.setState({ account: accounts[0] })
+    let h = new web3.eth.Contract(meta.output.abi, "0x5ab48bbfca3214764ac06c8c37b3a3414533038f")
+    let s = await h.methods.harambeSupply().call();
+    let v = s;
+    console.log("Length ", s.length);
+    if (s.length > 18) {
+      let l = s.length - 18;
+      v = s.substring(0, l) + "." + s.substring(l, l+3) + "B";
+    }
+
+    this.setState({supply: v})
+  }
+
+  constructor(props) {
+    super(props)
+    this.state = { account: '' }
+  }
+
+  render() {
+    const classes = this.props;
+    const handleClick = () => {
+      console.info('You clicked the Chip.');
+    };
+    const img = <img src={icon} alt="icon" />
+    return (
+    <div className={classes.root}>
+      <AppBar position="static" title={img}>
+        <Toolbar>
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" className={classes.title}>
+            RIPHarambe
+          </Typography>
+          <Chip label="Purchase" onClick={handleClick}/>
+          <Tooltip title="Purchase">
+              <Link rel="noopener noreferrer" target="_blank" href='https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x5ab48bbfca3214764ac06c8c37b3a3414533038f'>
+            <IconButton>
+              <ShopIcon />
+            </IconButton>
+              </Link>
+          </Tooltip>
+          <Button color="inherit">Purchase</Button>
+          <Button color="inherit">Connect</Button>
+        </Toolbar>
+      </AppBar>
+      <div className="App">
+        <p>Community Ape Fund: {this.state.supply}</p>
+        <img src={icon} alt="icon" />
+       <Paper>
+          Current Harambe Fund: {this.state.supply}
+       </Paper>
+
+        <Card className={classes.root}>
+          <CardContent>
+            <Typography className={classes.title}>
+                LP Locked
+            </Typography>
+          </CardContent>
+        </Card>
+
+      <div className="container">
+        <Container className={classes.about}>
+        </Container>
+        <Grid
+          container
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          style={{ minWidth: '100vh'}}
+          justify="center"
+        >
+         <Grid item xs={5}>
+           <AlignItemList />
+         </Grid>
+         <Grid item xs={5}>
+        On 5/28/2016 Harambe was tragically murdered at the young age of 17.  We’ve created a lighthearted fun crypto in his memory to make sure we never forget that fateful day in history. This project has no roadmap other than building a community, having fun, and deciding where we go together. Welcome to the movement. 
+        </Grid>
+         <Grid item xs={5}>
+       <h1>Tokenomics</h1>
+       </Grid>
+         <Grid item xs={5}>
+        <List className={classes.root} component="nav">
+          <ListItem>
+            <ListItemText>
+              LP Locked
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              Community Ape Fund - 50,000,000,000 Initial + 5.28% transaction fee in May
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              Special giveaway on 5/28 - 50,000,000,000
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              In memory of everyone’s favorite gorilla, 50 billion tokens will be distributed evenly to 17 randomly selected hodlers who make a purchase on 5/28. *Must make a purchase on 05/28 to be eligible. Giveaway is coded into the contract and is automated
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              1% fee per transaction goes to locked LP
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              Current Harambe Fund: {this.state.supply}
+            </ListItemText>
+          </ListItem>
+        </List>
+       </Grid>
+        </Grid>
+      </div>
+      </div>
+    </div>
+    );
+  }
+}
+
+/*
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
+*/
+
+export default withStyles(useStyles)(App);
