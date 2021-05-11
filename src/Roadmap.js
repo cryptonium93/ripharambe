@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     textAlign: "center",
     maxWidth: 345,
+    color: "#f7fbff",
     //backgroundColor: theme.palette.background.paper,
   },
   media: {
@@ -39,7 +40,7 @@ export default function Roadmap() {
             target="_blank"
           >
             <ListItemIcon>
-              <CheckCircleIcon />
+              <CheckCircleIcon htmlColor="#f7fbff" />
             </ListItemIcon>
             <ListItemText primary="Launch Contract"/>
           </ListItem>
@@ -52,7 +53,7 @@ export default function Roadmap() {
             target="_blank"
           >
             <ListItemIcon>
-              <CheckCircleIcon />
+              <CheckCircleIcon htmlColor="#f7fbff" />
             </ListItemIcon>
             <ListItemText primary="Lock Liquidity"/>
           </ListItem>

@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     textAlign: "center",
     maxWidth: 1000,
+    color: "#f7fbff",
   },
   media: {
     height: 0,

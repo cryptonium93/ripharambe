@@ -54,7 +54,8 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-    color: 'black',
+    //color: 'black',
+    color: '#f7fbff',
   }
 }));
 
@@ -111,13 +112,13 @@ export default function TopBar(props) {
           <Tooltip title="Purchase">
               <Link rel="noopener noreferrer" target="_blank" href='https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x5ab48bbfca3214764ac06c8c37b3a3414533038f'>
             <IconButton>
-              <ShopIcon />
+              <ShopIcon htmlColor="#f7fbff" />
             </IconButton>
               </Link>
           </Tooltip>
           <IconButton aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
             <Tooltip title="Vote">
-              <HowToVoteIcon />
+              <HowToVoteIcon htmlColor="#f7fbff" />
             </Tooltip>
           </IconButton>
           <Menu

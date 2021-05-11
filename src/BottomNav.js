@@ -16,6 +16,7 @@ import { faDiscord } from '@fortawesome/free-brands-svg-icons'
 const useStyles = makeStyles({
   root: {
     backgroundColor: 'transparent',
+    color: "#f7fbff",
   },
 });
 
@@ -25,7 +26,7 @@ export default function SimpleBottomNavigation() {
 
   return (
     <Container maxWidth="sm" className={classes.root}>
-      <Typography color="textSecondary">NOTE: This is a community-driven fun meme project, please do your research before buying this or any other crypto asset.
+      <Typography>NOTE: This is a community-driven fun meme project, please do your research before buying this or any other crypto asset.
       </Typography>
       <BottomNavigation
         value={value}
@@ -39,11 +40,11 @@ export default function SimpleBottomNavigation() {
           href="https://t.me/RIPHarambeToken"
           rel="noopener noreferrer"
           target="_blank"
-          icon={<FontAwesomeIcon icon={faTelegram} />}
+          icon={<FontAwesomeIcon color="#f7fbff" icon={faTelegram} />}
         />
-        <BottomNavigationAction icon={<FontAwesomeIcon icon={faDiscord} />} />
-        <BottomNavigationAction icon={<FontAwesomeIcon icon={faFacebook} />} />
-        <BottomNavigationAction icon={<FontAwesomeIcon icon={faTwitter} />} />
+        <BottomNavigationAction icon={<FontAwesomeIcon color="#f7fbff" icon={faDiscord} />} />
+        <BottomNavigationAction icon={<FontAwesomeIcon color="#f7fbff" icon={faFacebook} />} />
+        <BottomNavigationAction icon={<FontAwesomeIcon color="#f7fbff" icon={faTwitter} />} />
       </BottomNavigation>
     </Container>
   );
