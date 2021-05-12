@@ -42,9 +42,27 @@ export default function SimpleBottomNavigation() {
           target="_blank"
           icon={<FontAwesomeIcon color="#f7fbff" icon={faTelegram} />}
         />
-        <BottomNavigationAction icon={<FontAwesomeIcon color="#f7fbff" icon={faDiscord} />} />
-        <BottomNavigationAction icon={<FontAwesomeIcon color="#f7fbff" icon={faFacebook} />} />
-        <BottomNavigationAction icon={<FontAwesomeIcon color="#f7fbff" icon={faTwitter} />} />
+
+        <BottomNavigationAction
+          href="https://discord.gg/JAYfcVqD"
+          rel="noopener noreferrer"
+          target="_blank"
+          icon={<FontAwesomeIcon color="#f7fbff" icon={faDiscord} />}
+        />
+
+        <BottomNavigationAction
+          href="https://facebook.com/ape.strong.501"
+          rel="noopener noreferrer"
+          target="_blank"
+          icon={<FontAwesomeIcon color="#f7fbff" icon={faFacebook} />}
+        />
+
+        <BottomNavigationAction
+          href="https://twitter.com/RIPHARAMBETOKEN"
+          rel="noopener noreferrer"
+          target="_blank"
+          icon={<FontAwesomeIcon color="#f7fbff" icon={faTwitter} />}
+        />
       </BottomNavigation>
     </Container>
   );

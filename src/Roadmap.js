@@ -58,6 +58,20 @@ export default function Roadmap() {
             <ListItemText primary="Lock Liquidity"/>
           </ListItem>
 
+          <ListItem>
+            <ListItemIcon>
+              <CheckCircleIcon htmlColor="#f7fbff" />
+            </ListItemIcon>
+            <ListItemText primary="Request CoinMarketCap"/>
+          </ListItem>
+
+          <ListItem>
+            <ListItemIcon>
+              <CheckCircleIcon htmlColor="#f7fbff" />
+            </ListItemIcon>
+            <ListItemText primary="Request CoinGecko"/>
+          </ListItem>
+
           <ListItem><ListItemText primary="Special Giveaway - 5/28"/></ListItem>
           <ListItem><ListItemText primary="Harambe Fund Vote - Q2"/></ListItem>
           <ListItem><ListItemText primary="Save Harambe Game - Q2"/></ListItem>
