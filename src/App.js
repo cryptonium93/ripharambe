@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Web3 from 'web3'
 import background from './background.jpg'
 import AlignItemList from './AlignItemList.js'
@@ -56,6 +57,32 @@ class Harambe extends Component {
 }
 
 //const theme = createMuiTheme();
+
+const theme = createMuiTheme({
+  overrides: {
+    MuiIcon: {
+      root: {
+        "& > *:first-child": {
+          flexShrink: 1
+        }
+      }
+    },
+    MuiButton: {
+      startIcon: {
+        "& > *:first-child": {
+          alignItems: "center",
+          width: "2ch",
+          height: "auto"
+        }
+      },
+      iconSizeLarge: {
+        "& > *:first-child": {
+        fontSize: 18
+        }
+      }
+    }
+ }
+});
 
 const useStyles = theme => ({
   root: {
@@ -158,10 +185,12 @@ class App extends Component {
     const img = <img src={icon} alt="icon" />
     return (
     <div className='App'>
+    <ThemeProvider theme={theme}>
       <TopBar wallet1={this.state.wallet1} wallet2={this.state.wallet2}/>
       <Header supply={this.state.supply}/>
 			<Anthem />
 			<BottomNav />
+      </ThemeProvider>
     </div>
     );
   }

@@ -20,6 +20,15 @@ const useStyles = makeStyles({
   },
 });
 
+/*
+        <BottomNavigationAction
+          href="https://facebook.com/ape.strong.501"
+          rel="noopener noreferrer"
+          target="_blank"
+          icon={<FontAwesomeIcon color="#f7fbff" icon={faFacebook} />}
+        />
+        */
+
 export default function SimpleBottomNavigation() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -36,6 +45,7 @@ export default function SimpleBottomNavigation() {
         showLabels
         className={classes.root}
       >
+
         <BottomNavigationAction
           href="https://t.me/RIPHarambeToken"
           rel="noopener noreferrer"
@@ -44,25 +54,19 @@ export default function SimpleBottomNavigation() {
         />
 
         <BottomNavigationAction
-          href="https://discord.gg/JAYfcVqD"
-          rel="noopener noreferrer"
-          target="_blank"
-          icon={<FontAwesomeIcon color="#f7fbff" icon={faDiscord} />}
-        />
-
-        <BottomNavigationAction
-          href="https://facebook.com/ape.strong.501"
-          rel="noopener noreferrer"
-          target="_blank"
-          icon={<FontAwesomeIcon color="#f7fbff" icon={faFacebook} />}
-        />
-
-        <BottomNavigationAction
           href="https://twitter.com/RIPHARAMBETOKEN"
           rel="noopener noreferrer"
           target="_blank"
           icon={<FontAwesomeIcon color="#f7fbff" icon={faTwitter} />}
         />
+
+        <BottomNavigationAction
+          href="https://discord.gg/hpzyPR9pf3"
+          rel="noopener noreferrer"
+          target="_blank"
+          icon={<FontAwesomeIcon color="#f7fbff" icon={faDiscord} />}
+        />
+
       </BottomNavigation>
     </Container>
   );

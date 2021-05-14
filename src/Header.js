@@ -1,6 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 import pancakeswap from './pancakeswap.svg';
+import telegram from './images/telegram.svg';
 //import icon from './icon.svg';
 import icon from './harambe_icon.png';
 import Button from '@material-ui/core/Button';
@@ -39,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
     color: '#f7fbff',
     //color: 'transparent',
     marginTop: '10ch',
+    marginRight: '1ch'
   }
 }));
 
@@ -53,6 +56,12 @@ export default function Header(props) {
   const pcsIcon = (
       <Icon>
         <img alt="pancakeswap" src={pancakeswap}/>
+      </Icon>
+      )
+
+  const tgIcon = (
+      <Icon>
+        <img alt="telegram" src={telegram}/>
       </Icon>
       )
 
@@ -72,6 +81,18 @@ export default function Header(props) {
             startIcon={pcsIcon}
           >
             Buy Now
+          </Button>
+        </Link>
+
+        <Link color="#f7fbff" rel="noopener noreferrer" target="_blank" href='https://t.me/RIPHarambeToken'>
+          <Button
+            size="large"
+            variant="outlined"
+            color="inherit"
+            className={classes.button}
+            startIcon={tgIcon}
+          >
+            Join Us
           </Button>
         </Link>
 
