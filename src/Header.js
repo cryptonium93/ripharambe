@@ -1,6 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
+import { Player } from 'video-react';
+import Dean from './Dean.js'
+import videojs from 'video.js'
+import dean from './videos/harambe_dean.mp4';
 import pancakeswap from './pancakeswap.svg';
 import telegram from './images/telegram.svg';
 //import icon from './icon.svg';
@@ -67,6 +71,7 @@ export default function Header(props) {
 
   return (
       <Container maxWidth="sm" className={classes.root}>
+        <Dean />
         <Typography className={classes.text} color="textPrimary">Community Ape Fund</Typography>
         <Typography className={classes.text} color="textSecondary">{props.supply}</Typography>
         <Typography className={classes.text} style={{marginTop:'10ch'}} >
