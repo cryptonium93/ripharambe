@@ -1,4 +1,5 @@
 import React from 'react';
+import copy from "copy-to-clipboard";  
 import { makeStyles } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { Player } from 'video-react';
@@ -10,6 +11,8 @@ import telegram from './images/telegram.svg';
 //import icon from './icon.svg';
 import icon from './harambe_icon.png';
 import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Chip from '@material-ui/core/Chip';
@@ -58,6 +61,32 @@ const handleClick = () => {
 export default function Header(props) {
   const classes = useStyles();
 
+    const [copyText, setCopyText] = React.useState('');
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+  
+    const handleCopyText = (e) => {
+       setCopyText(e.target.value);
+    } 
+    
+    const copyToClipboard = () => {
+       copy(addr);
+       handleClick()
+       //alert(`You have copied "${addr}"`);
+    }
+
   const pcsIcon = (
       <Icon>
         <img alt="pancakeswap" src={pancakeswap}/>
@@ -70,13 +99,35 @@ export default function Header(props) {
       </Icon>
       )
 
+  const addr = "0x5aB48BbFca3214764ac06c8C37B3a3414533038F";
+
   return (
       <Container maxWidth="sm" className={classes.root}>
         <Dean />
         <Typography className={classes.text} color="textPrimary">Community Ape Fund</Typography>
         <Typography className={classes.text} color="textSecondary">{props.supply}</Typography>
         <Typography className={classes.text} style={{marginTop: '2ch'}} color="textPrimary">Contract Address</Typography>
-        <Typography className={classes.text} size="sm" color="textSecondary">0x5aB48BbFca3214764ac06c8C37B3a3414533038F</Typography>
+        <Typography className={classes.text} size="sm" color="textSecondary"><span value={addr} onClick={copyToClipboard}>0x5aB48BbFca3214764ac06c8C37B3a3414533038F</span></Typography>
+				<Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={open}
+        autoHideDuration={700}
+        onClose={handleClose}
+        message="Copied"
+        action={
+          <React.Fragment>
+            <Button color="secondary" size="small" onClick={handleClose}>
+              UNDO
+            </Button>
+            <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
         <Typography className={classes.text} style={{marginTop:'7ch'}} >
           On 5/28/2016 Harambe was tragically murdered at the young age of 17.  We’ve created a lighthearted fun crypto in his memory to make sure we never forget that fateful day in history. This project strives to build a community, have fun, and decide where we go together. Welcome to the movement. 
         </Typography>
