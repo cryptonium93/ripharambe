@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     //fontWeight: 'bold',
+    fontSize: 14,
     color: '#f7fbff',
   },
   button: {
@@ -74,7 +75,9 @@ export default function Header(props) {
         <Dean />
         <Typography className={classes.text} color="textPrimary">Community Ape Fund</Typography>
         <Typography className={classes.text} color="textSecondary">{props.supply}</Typography>
-        <Typography className={classes.text} style={{marginTop:'10ch'}} >
+        <Typography className={classes.text} style={{marginTop: '2ch'}} color="textPrimary">Contract Address</Typography>
+        <Typography className={classes.text} size="sm" color="textSecondary">0x5aB48BbFca3214764ac06c8C37B3a3414533038F</Typography>
+        <Typography className={classes.text} style={{marginTop:'7ch'}} >
           On 5/28/2016 Harambe was tragically murdered at the young age of 17.  We’ve created a lighthearted fun crypto in his memory to make sure we never forget that fateful day in history. This project strives to build a community, have fun, and decide where we go together. Welcome to the movement. 
         </Typography>
         <Link color="#f7fbff" rel="noopener noreferrer" target="_blank" href='https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x5ab48bbfca3214764ac06c8c37b3a3414533038f'>
