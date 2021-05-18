@@ -5,7 +5,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { Player } from 'video-react';
 import Dean from './Dean.js'
 import videojs from 'video.js'
-import dean from './videos/harambe_dean.mp4';
+//import dean from './videos/harambe_dean.mp4';
 import pancakeswap from './pancakeswap.svg';
 import telegram from './images/telegram.svg';
 //import icon from './icon.svg';

@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import dean from './videos/harambe_dean.mp4';
+import YoutubeEmbed from "./YoutubeEmbed";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,7 +18,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Anthem() {
+/*
+export default function Dean() {
   const classes = useStyles();
 
   return (
@@ -46,6 +48,18 @@ export default function Anthem() {
       title="Embedded Dean"
     />
   </div>
+      </Container>
+  )
+}
+*/
+
+export default function Dean() {
+  const classes = useStyles();
+
+  return (
+      <Container maxWidth="sm" className={classes.root}>
+        <Typography><h1>Anthem</h1></Typography>
+        <YoutubeEmbed embedId="4QEZgwiEvHU" />
       </Container>
   )
 }
