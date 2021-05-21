@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import dean from './videos/harambe_dean.mp4';
+//import dean from './videos/harambe_dean.mp4';
 import YoutubeEmbed from "./YoutubeEmbed";
 
 const useStyles = makeStyles((theme) => ({
@@ -58,7 +58,6 @@ export default function Dean() {
 
   return (
       <Container maxWidth="sm" className={classes.root}>
-        <Typography><h1>Anthem</h1></Typography>
         <YoutubeEmbed embedId="4QEZgwiEvHU" />
       </Container>
   )
